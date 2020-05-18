@@ -1,4 +1,4 @@
-package com.example.android.politicalpreparedness.ui.representative
+package com.example.android.politicalpreparedness.ui.representatives
 
 import android.content.Context
 import android.location.Geocoder
@@ -9,22 +9,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import com.example.android.politicalpreparedness.databinding.FragmentRepresentativesBinding
 import com.example.android.politicalpreparedness.models.Address
 import java.util.*
 
-class DetailFragment : Fragment() {
+class RepresentativesFragment : Fragment() {
 
-    companion object {
-        //TODO: Add Constant for Location request
-    }
+    private lateinit var binding: FragmentRepresentativesBinding
 
     //TODO: Declare ViewModel
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        //TODO: Establish bindings
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentRepresentativesBinding.inflate(inflater)
+        binding.lifecycleOwner = this
 
         //TODO: Define and assign Representative adapter
 
@@ -32,6 +29,7 @@ class DetailFragment : Fragment() {
 
         //TODO: Establish button listeners for field and location search
 
+        return binding.root
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -68,7 +66,10 @@ class DetailFragment : Fragment() {
 
     private fun hideKeyboard() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view!!.windowToken, 0)
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 
+    companion object {
+        //TODO: Add Constant for Location request
+    }
 }

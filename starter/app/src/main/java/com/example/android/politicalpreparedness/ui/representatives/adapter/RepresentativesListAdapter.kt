@@ -1,4 +1,4 @@
-package com.example.android.politicalpreparedness.ui.representative.adapter
+package com.example.android.politicalpreparedness.ui.representatives.adapter
 
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
@@ -13,7 +13,7 @@ import com.example.android.politicalpreparedness.databinding.ViewholderRepresent
 import com.example.android.politicalpreparedness.models.Channel
 import com.example.android.politicalpreparedness.models.Representative
 
-class RepresentativeListAdapter : ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()) {
+class RepresentativesListAdapter : ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepresentativeViewHolder {
         return RepresentativeViewHolder.from(parent)

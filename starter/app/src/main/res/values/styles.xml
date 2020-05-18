@@ -2,13 +2,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="materialButtonStyle">@style/ButtonStyle</item>
     </style>
 
     <!-- TODO: Add necessary styles -->
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
 
 </resources>

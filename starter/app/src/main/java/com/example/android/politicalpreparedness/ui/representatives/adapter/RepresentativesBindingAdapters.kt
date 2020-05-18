@@ -1,4 +1,4 @@
-package com.example.android.politicalpreparedness.ui.representative.adapter
+package com.example.android.politicalpreparedness.ui.representatives.adapter
 
 import android.widget.ArrayAdapter
 import android.widget.ImageView
