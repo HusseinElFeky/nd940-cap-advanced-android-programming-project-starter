@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativesBinding
 import com.example.android.politicalpreparedness.models.Address
@@ -24,7 +25,9 @@ class RepresentativesFragment : Fragment() {
 
     private lateinit var binding: FragmentRepresentativesBinding
 
-    //TODO: Declare ViewModel
+    private val viewModel by viewModels<RepresentativesViewModel> {
+        RepresentativesViewModelFactory()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRepresentativesBinding.inflate(inflater)

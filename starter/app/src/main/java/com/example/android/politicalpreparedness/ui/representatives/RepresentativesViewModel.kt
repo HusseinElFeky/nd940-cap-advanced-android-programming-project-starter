@@ -1,8 +1,11 @@
 package com.example.android.politicalpreparedness.ui.representatives
 
 import androidx.lifecycle.ViewModel
+import com.example.android.politicalpreparedness.network.CivicsApiService
 
-class RepresentativesViewModel : ViewModel() {
+class RepresentativesViewModel(
+    private val civicsApi: CivicsApiService
+) : ViewModel() {
 
     //TODO: Establish live data for representatives and address
 

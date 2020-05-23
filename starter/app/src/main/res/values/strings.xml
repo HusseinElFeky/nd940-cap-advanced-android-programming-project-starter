@@ -6,6 +6,10 @@
     <!-- Error Strings -->
     <string name="error_device_location_disabled">Device location is disabled. Please enable it first.</string>
 
+    <!-- Screens Labels -->
+    <string name="label_elections">Elections</string>
+    <string name="label_representatives">Representatives</string>
+
     <!-- Launch Screen -->
     <string name="ballot_logo">Ballot Logo</string>
     <string name="upcoming_elections">Upcoming Elections</string>
