@@ -3,10 +3,17 @@
 
     <string name="app_name">Political Preparedness</string>
 
+    <!-- Error Strings -->
+    <string name="error_device_location_disabled">Device location is disabled. Please enable it first.</string>
+
     <!-- Launch Screen -->
     <string name="ballot_logo">Ballot Logo</string>
     <string name="upcoming_elections">Upcoming Elections</string>
     <string name="find_my_representatives">Find My Representatives</string>
+
+    <!-- Representatives Screen -->
+    <string name="enable_device_location">Enable Device Location</string>
+    <string name="msg_open_location_settings">Device location is required to get your current location. Please go to the location settings, and enable it.</string>
 
     <!-- TODO: Add necessary string values -->
 
