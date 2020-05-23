@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="representative"
+            type="com.example.android.politicalpreparedness.models.Representative" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/iv_representative_photo"
+            profileImage="@{representative.official.photoUrl}"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_office_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:lines="1"
+            android:text="@{representative.office.name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_official_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_representative_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Android Developer" />
+
+        <TextView
+            android:id="@+id/tv_official_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:lines="1"
+            android:text="@{representative.official.name}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_official_party"
+            app:layout_constraintEnd_toStartOf="@id/iv_www_icon"
+            app:layout_constraintStart_toStartOf="@id/tv_office_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_office_name"
+            tools:text="Hussein El Feky" />
+
+        <TextView
+            android:id="@+id/tv_official_party"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@{representative.official.party}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_official_name"
+            app:layout_constraintStart_toStartOf="@id/tv_office_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_official_name"
+            tools:text="Egyptian Citizen" />
+
+        <ImageView
+            android:id="@+id/iv_www_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_www"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_facebook_icon" />
+
+        <ImageView
+            android:id="@+id/iv_facebook_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_facebook"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_twitter_icon" />
+
+        <ImageView
+            android:id="@+id/iv_twitter_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_twitter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

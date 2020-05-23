@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.android.politicalpreparedness.binding.Converter" />
+
+        <variable
+            name="election"
+            type="com.example.android.politicalpreparedness.models.Election" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{election.name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="VIP Test Election" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{Converter.dateToString(election.electionDay)}"
+            tools:text="Sun Jun 06 00:00:00 EDT 2021" />
+
+    </LinearLayout>
+
+</layout>
