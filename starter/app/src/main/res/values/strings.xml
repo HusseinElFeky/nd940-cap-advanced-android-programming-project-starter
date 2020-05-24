@@ -24,6 +24,9 @@
     <string name="upcoming_elections">Upcoming Elections</string>
     <string name="find_my_representatives">Find My Representatives</string>
 
+    <!-- Elections Screen -->
+    <string name="saved_elections">Saved Elections</string>
+
     <!-- Representatives Screen -->
     <string name="representatives_search">Representatives Search</string>
     <string name="my_representatives">My Representatives</string>
