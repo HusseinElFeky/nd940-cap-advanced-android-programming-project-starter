@@ -26,14 +26,25 @@
 
     <!-- Elections Screen -->
     <string name="saved_elections">Saved Elections</string>
+    <string name="no_saved_elections">No saved elections.</string>
 
     <!-- Representatives Screen -->
+    <string name="official_photo">Official Photo</string>
+    <string name="website_link">Official Website Link</string>
+    <string name="facebook_link">Facebook Link</string>
+    <string name="twitter_link">Twitter Link</string>
     <string name="representatives_search">Representatives Search</string>
     <string name="my_representatives">My Representatives</string>
     <string name="use_my_location">Use My Location</string>
     <string name="enable_device_location">Enable Device Location</string>
     <string name="msg_open_location_settings">Device location is required to get your current location. Please go to the location settings, and enable it.</string>
+    <string name="no_representatives_fetched">No representatives fetched yet.</string>
 
-    <!-- TODO: Add necessary string values -->
+    <!-- Voter Info Screen -->
+    <string name="election_information">Election Information</string>
+    <string name="voting_locations">Voting Locations</string>
+    <string name="ballot_information">Ballot Information</string>
+    <string name="follow_election">Follow Election</string>
+    <string name="unfollow_election">Unfollow Election</string>
 
 </resources>

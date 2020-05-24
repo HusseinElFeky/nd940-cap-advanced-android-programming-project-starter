@@ -56,11 +56,8 @@
             android:name="arg_election_name"
             app:argType="string" />
         <argument
-            android:name="arg_election_id"
-            app:argType="integer" />
-        <argument
-            android:name="arg_division"
-            app:argType="com.example.android.politicalpreparedness.models.Division" />
+            android:name="arg_election"
+            app:argType="com.example.android.politicalpreparedness.models.Election" />
     </fragment>
 
 </navigation>

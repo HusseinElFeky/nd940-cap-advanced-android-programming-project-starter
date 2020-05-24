@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.android.politicalpreparedness.databinding.FragmentElectionsBinding
 import com.example.android.politicalpreparedness.models.Election
 import com.example.android.politicalpreparedness.ui.elections.adapter.ElectionsListAdapter
-import com.husseinelfeky.githubpaging.common.paging.state.NetworkState
+import com.husseinelfeky.githubpaging.common.paging.state.ResponseState
 
 class ElectionsFragment : Fragment() {
 
@@ -36,8 +36,7 @@ class ElectionsFragment : Fragment() {
             findNavController().navigate(
                 ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
                     election.name,
-                    election.id,
-                    election.division
+                    election
                 )
             )
         }
@@ -50,7 +49,7 @@ class ElectionsFragment : Fragment() {
             onItemClicked.invoke(election)
         }
 
-        with(binding) {
+        binding.apply {
             rvUpcomingElections.adapter = upcomingElectionsAdapter
             rvSavedElections.adapter = savedElectionsAdapter
         }
@@ -61,19 +60,24 @@ class ElectionsFragment : Fragment() {
 
         viewModel.savedElections.observe(viewLifecycleOwner, Observer {
             savedElectionsAdapter.submitList(it)
+            binding.tvStateSavedElections.isVisible = it.isEmpty()
         })
 
-        viewModel.networkState.observe(viewLifecycleOwner, Observer { networkState ->
-            with(binding) {
-                progressBar.isVisible = networkState is NetworkState.Loading
-                tvError.isVisible = networkState is NetworkState.Error
+        viewModel.stateUpcomingElections.observe(viewLifecycleOwner, Observer { responseState ->
+            binding.apply {
+                pbUpcomingElections.isVisible = responseState is ResponseState.Loading
+                tvStateUpcomingElections.isVisible = responseState is ResponseState.Error
 
-                if (networkState is NetworkState.Error) {
-                    tvError.text = networkState.messageRes?.let { it ->
+                if (responseState is ResponseState.Error) {
+                    tvStateUpcomingElections.text = responseState.messageRes?.let { it ->
                         getString(it)
                     }
                 }
             }
+        })
+
+        viewModel.stateSavedElections.observe(viewLifecycleOwner, Observer { responseState ->
+            binding.pbSavedElections.isVisible = responseState is ResponseState.Loading
         })
     }
 }

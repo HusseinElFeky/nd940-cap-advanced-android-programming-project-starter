@@ -6,19 +6,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="materialButtonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
-    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
-        <item name="android:backgroundTint">@color/colorPrimary</item>
+    <style name="HeaderStyle" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="HeaderStyle">
-        <item name="android:textSize">22sp</item>
+    <style name="ItemTitleStyle">
+        <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 

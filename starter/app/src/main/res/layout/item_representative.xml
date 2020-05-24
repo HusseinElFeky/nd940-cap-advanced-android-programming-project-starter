@@ -15,13 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:paddingStart="@dimen/large_padding"
+        android:paddingTop="@dimen/default_padding"
+        android:paddingEnd="@dimen/large_padding"
+        android:paddingBottom="@dimen/default_padding">
 
         <ImageView
             android:id="@+id/iv_representative_photo"
             profileImage="@{representative.official.photoUrl}"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:contentDescription="@string/official_photo"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,13 +33,13 @@
 
         <TextView
             android:id="@+id/tv_office_name"
+            style="@style/ItemTitleStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/large_padding"
+            android:ellipsize="end"
             android:lines="1"
             android:text="@{representative.office.name}"
-            android:textSize="16sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tv_official_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_representative_photo"
@@ -46,7 +50,8 @@
             android:id="@+id/tv_official_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/large_padding"
+            android:ellipsize="end"
             android:lines="1"
             android:text="@{representative.official.name}"
             android:textSize="16sp"
@@ -60,6 +65,7 @@
             android:id="@+id/tv_official_party"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
             android:lines="1"
             android:text="@{representative.official.party}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +78,8 @@
             android:id="@+id/iv_www_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/large_padding"
+            android:contentDescription="@string/website_link"
             android:src="@drawable/ic_www"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/iv_facebook_icon" />
@@ -81,7 +88,8 @@
             android:id="@+id/iv_facebook_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/large_padding"
+            android:contentDescription="@string/facebook_link"
             android:src="@drawable/ic_facebook"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/iv_twitter_icon" />
@@ -90,6 +98,7 @@
             android:id="@+id/iv_twitter_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:contentDescription="@string/twitter_link"
             android:src="@drawable/ic_twitter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

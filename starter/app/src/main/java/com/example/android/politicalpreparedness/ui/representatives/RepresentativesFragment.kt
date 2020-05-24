@@ -19,10 +19,10 @@ import com.example.android.politicalpreparedness.models.Address
 import com.example.android.politicalpreparedness.ui.representatives.adapter.RepresentativesListAdapter
 import com.example.android.politicalpreparedness.utils.LocationGetter
 import com.example.android.politicalpreparedness.utils.PermissionsHelper
-import com.example.android.politicalpreparedness.utils.PermissionsHelper.PERMISSION_FINE_LOCATION
-import com.example.android.politicalpreparedness.utils.PermissionsHelper.REQUEST_FINE_LOCATION_PERMISSION
+import com.example.android.politicalpreparedness.utils.PermissionsHelper.PERMISSIONS_LOCATION
+import com.example.android.politicalpreparedness.utils.PermissionsHelper.REQUEST_LOCATION_PERMISSIONS
 import com.google.android.material.snackbar.Snackbar
-import com.husseinelfeky.githubpaging.common.paging.state.NetworkState
+import com.husseinelfeky.githubpaging.common.paging.state.ResponseState
 import java.util.*
 
 class RepresentativesFragment : Fragment() {
@@ -50,16 +50,24 @@ class RepresentativesFragment : Fragment() {
 
         viewModel.representatives.observe(viewLifecycleOwner, Observer {
             representativesAdapter.submitList(it)
+            if (it.isEmpty()) {
+                binding.tvStateRepresentatives.apply {
+                    text = getString(R.string.no_representatives_fetched)
+                    isVisible = true
+                }
+            } else if (viewModel.stateRepresentatives.value !is ResponseState.Error) {
+                binding.tvStateRepresentatives.isVisible = false
+            }
         })
 
-        viewModel.networkState.observe(viewLifecycleOwner, Observer { networkState ->
-            with(binding) {
-                progressBar.isVisible = networkState is NetworkState.Loading
-                tvError.isVisible = networkState is NetworkState.Error
-                rvRepresentatives.isVisible = networkState is NetworkState.Loaded
+        viewModel.stateRepresentatives.observe(viewLifecycleOwner, Observer { responseState ->
+            binding.apply {
+                pbRepresentatives.isVisible = responseState is ResponseState.Loading
+                tvStateRepresentatives.isVisible = responseState is ResponseState.Error
+                rvRepresentatives.isVisible = responseState is ResponseState.Loaded
 
-                if (networkState is NetworkState.Error) {
-                    tvError.text = networkState.messageRes?.let { it ->
+                if (responseState is ResponseState.Error) {
+                    tvStateRepresentatives.text = responseState.messageRes?.let { it ->
                         getString(it)
                     }
                 }
@@ -68,7 +76,7 @@ class RepresentativesFragment : Fragment() {
     }
 
     private fun initClickListeners() {
-        with(binding) {
+        binding.apply {
             btnSearch.setOnClickListener {
                 hideKeyboard()
                 this@RepresentativesFragment.viewModel.getRepresentatives(
@@ -90,10 +98,10 @@ class RepresentativesFragment : Fragment() {
     }
 
     private fun checkLocationPermissions() {
-        return if (PermissionsHelper.isPermissionGranted(requireContext(), PERMISSION_FINE_LOCATION)) {
+        return if (PermissionsHelper.arePermissionsGranted(requireContext(), PERMISSIONS_LOCATION)) {
             getLocationIfPossible()
         } else {
-            PermissionsHelper.requestPermission(this, PERMISSION_FINE_LOCATION, REQUEST_FINE_LOCATION_PERMISSION)
+            PermissionsHelper.requestPermissions(this, PERMISSIONS_LOCATION, REQUEST_LOCATION_PERMISSIONS)
         }
     }
 
@@ -133,14 +141,16 @@ class RepresentativesFragment : Fragment() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            REQUEST_FINE_LOCATION_PERMISSION -> {
-                if (grantResults.first() != PackageManager.PERMISSION_GRANTED) {
-                    Snackbar.make(
-                        binding.root,
-                        R.string.error_location_permission_required,
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                    return
+            REQUEST_LOCATION_PERMISSIONS -> {
+                grantResults.forEach { grantResult ->
+                    if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                        Snackbar.make(
+                            binding.root,
+                            R.string.error_location_permission_required,
+                            Snackbar.LENGTH_LONG
+                        ).show()
+                        return
+                    }
                 }
                 getLocationIfPossible()
             }

@@ -9,9 +9,12 @@ import androidx.fragment.app.Fragment
 
 object PermissionsHelper {
 
-    const val REQUEST_FINE_LOCATION_PERMISSION = 1000
+    const val REQUEST_LOCATION_PERMISSIONS = 1000
 
-    const val PERMISSION_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION
+    val PERMISSIONS_LOCATION = arrayOf(
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    )
 
     fun isPermissionGranted(context: Context, permission: String): Boolean {
         val deviceVersion = Build.VERSION.SDK_INT
@@ -23,6 +26,15 @@ object PermissionsHelper {
         } else {
             true
         }
+    }
+
+    fun arePermissionsGranted(context: Context, permissions: Array<String>): Boolean {
+        permissions.forEach { permission ->
+            if (!isPermissionGranted(context, permission)) {
+                return false
+            }
+        }
+        return true
     }
 
     fun requestPermission(fragment: Fragment, permission: String, requestCode: Int) {

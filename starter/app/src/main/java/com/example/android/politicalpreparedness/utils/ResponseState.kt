@@ -2,16 +2,16 @@ package com.husseinelfeky.githubpaging.common.paging.state
 
 import androidx.annotation.StringRes
 
-sealed class NetworkState {
+sealed class ResponseState {
 
-    object Loading : NetworkState()
+    object Loading : ResponseState()
 
-    object Loaded : NetworkState()
+    object Loaded : ResponseState()
 
     data class Error(
         val error: Throwable? = null,
         @StringRes val messageRes: Int? = null
-    ) : NetworkState() {
+    ) : ResponseState() {
         override fun toString(): String {
             return error?.localizedMessage ?: "Unknown Error"
         }

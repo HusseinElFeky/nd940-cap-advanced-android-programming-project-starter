@@ -8,7 +8,7 @@ import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.models.Address
 import com.example.android.politicalpreparedness.models.Representative
 import com.example.android.politicalpreparedness.network.CivicsApiService
-import com.husseinelfeky.githubpaging.common.paging.state.NetworkState
+import com.husseinelfeky.githubpaging.common.paging.state.ResponseState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,20 +25,20 @@ class RepresentativesViewModel(
     val representatives: LiveData<List<Representative>>
         get() = _representatives
 
-    private val _networkState = MutableLiveData<NetworkState>()
-    val networkState: LiveData<NetworkState>
-        get() = _networkState
+    private val _stateRepresentatives = MutableLiveData<ResponseState>()
+    val stateRepresentatives: LiveData<ResponseState>
+        get() = _stateRepresentatives
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, _ ->
-        _networkState.postValue(
-            NetworkState.Error(
+        _stateRepresentatives.postValue(
+            ResponseState.Error(
                 messageRes = R.string.error_no_internet_connection
             )
         )
     }
 
     fun getRepresentatives(address: Address) = viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
-        _networkState.postValue(NetworkState.Loading)
+        _stateRepresentatives.postValue(ResponseState.Loading)
 
         val response = civicsApi.getRepresentatives(address.toFormattedString())
         if (response.isSuccessful) {
@@ -50,12 +50,12 @@ class RepresentativesViewModel(
                     }
                 )
             }
-            _networkState.postValue(NetworkState.Loaded)
+            _stateRepresentatives.postValue(ResponseState.Loaded)
             return@launch
         }
 
-        _networkState.postValue(
-            NetworkState.Error(
+        _stateRepresentatives.postValue(
+            ResponseState.Error(
                 messageRes = R.string.error_failed_to_fetch_representatives
             )
         )

@@ -6,11 +6,11 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Looper
 import android.provider.Settings
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.android.politicalpreparedness.R
 import com.google.android.gms.location.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class LocationGetter(
     private val context: Context,
@@ -29,7 +29,7 @@ class LocationGetter(
     }
 
     fun showDeviceLocationRequestDialog(onNoButtonClickedCallback: () -> Unit) {
-        AlertDialog.Builder(context)
+        MaterialAlertDialogBuilder(context)
             .setTitle(R.string.enable_device_location)
             .setMessage(R.string.msg_open_location_settings)
             .setPositiveButton(android.R.string.ok) { _, _ ->

@@ -22,7 +22,7 @@ class LaunchFragment : Fragment() {
     }
 
     private fun initClickListeners() {
-        with(binding) {
+        binding.apply {
             btnElections.setOnClickListener {
                 findNavController().navigate(LaunchFragmentDirections.actionLaunchFragmentToElectionsFragment())
             }
