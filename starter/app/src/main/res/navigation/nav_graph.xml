@@ -13,10 +13,18 @@
         tools:layout="@layout/fragment_launch">
         <action
             android:id="@+id/action_launchFragment_to_electionsFragment"
-            app:destination="@id/electionsFragment" />
+            app:destination="@id/electionsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
         <action
             android:id="@+id/action_launchFragment_to_representativesFragment"
-            app:destination="@id/representativesFragment" />
+            app:destination="@id/representativesFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
     </fragment>
 
     <fragment
@@ -26,7 +34,11 @@
         tools:layout="@layout/fragment_elections">
         <action
             android:id="@+id/action_electionsFragment_to_voterInfoFragment"
-            app:destination="@id/voterInfoFragment" />
+            app:destination="@id/voterInfoFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
     </fragment>
 
     <fragment

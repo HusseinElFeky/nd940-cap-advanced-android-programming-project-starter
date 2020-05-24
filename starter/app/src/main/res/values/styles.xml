@@ -13,9 +13,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
-    <!-- TODO: Add necessary styles -->
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="HeaderStyle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

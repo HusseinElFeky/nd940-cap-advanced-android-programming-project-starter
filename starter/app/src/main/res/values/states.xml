@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="states">
         <item>Alabama</item>
         <item>Alaska</item>
@@ -58,4 +59,5 @@
         <item>Wisconsin</item>
         <item>Wyoming</item>
     </string-array>
+
 </resources>

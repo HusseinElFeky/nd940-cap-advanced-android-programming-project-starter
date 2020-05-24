@@ -14,6 +14,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "CIVICS_API_KEY", CIVICS_API_KEY)
     }
 
     buildTypes {
@@ -66,7 +67,7 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+    implementation "com.squareup.okhttp3:logging-interceptor:$version_logging_interceptor"
 
     // Moshi
     implementation "com.squareup.moshi:moshi:$version_moshi"

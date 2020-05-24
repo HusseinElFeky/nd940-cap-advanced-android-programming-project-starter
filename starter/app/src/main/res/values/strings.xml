@@ -4,7 +4,16 @@
     <string name="app_name">Political Preparedness</string>
 
     <!-- Error Strings -->
+    <string name="error_no_internet_connection">Failed to send network request.\n\nPlease make sure you are connected to the internet, then try again.</string>
+    <string name="error_failed_to_fetch_representatives">Failed to fetch representatives for your current location.\n\nPlease make sure you input a correct location within the United States.</string>
+    <string name="error_location_permission_required">"Location permission is needed to fetch your current location."</string>
     <string name="error_device_location_disabled">Device location is disabled. Please enable it first.</string>
+
+    <!-- Hint Strings -->
+    <string name="hint_address_line_1">Address Line 1</string>
+    <string name="hint_address_line_2">Address Line 2</string>
+    <string name="hint_city">City</string>
+    <string name="hint_zip">Zip</string>
 
     <!-- Screens Labels -->
     <string name="label_elections">Elections</string>
@@ -16,6 +25,9 @@
     <string name="find_my_representatives">Find My Representatives</string>
 
     <!-- Representatives Screen -->
+    <string name="representatives_search">Representatives Search</string>
+    <string name="my_representatives">My Representatives</string>
+    <string name="use_my_location">Use My Location</string>
     <string name="enable_device_location">Enable Device Location</string>
     <string name="msg_open_location_settings">Device location is required to get your current location. Please go to the location settings, and enable it.</string>
 
