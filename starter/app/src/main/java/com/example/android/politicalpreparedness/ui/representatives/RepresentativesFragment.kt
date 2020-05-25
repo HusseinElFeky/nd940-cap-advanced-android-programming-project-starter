@@ -111,8 +111,16 @@ class RepresentativesFragment : Fragment() {
 
     private fun getLocationIfPossible() {
         val locationGetter = LocationGetter(requireContext()) { location ->
-            val address = geoCodeLocation(location)
-            viewModel.updateAddress(address)
+            kotlin.runCatching {
+                val address = geoCodeLocation(location)
+                viewModel.updateAddress(address)
+            }.onFailure {
+                Snackbar.make(
+                    binding.root,
+                    R.string.error_failed_to_fetch_current_location,
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
         }
 
         if (locationGetter.isLocationEnabled()) {
