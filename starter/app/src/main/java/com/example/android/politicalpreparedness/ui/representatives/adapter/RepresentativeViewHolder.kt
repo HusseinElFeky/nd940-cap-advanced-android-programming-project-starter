@@ -1,7 +1,5 @@
 package com.example.android.politicalpreparedness.ui.representatives.adapter
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +9,7 @@ import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.ItemRepresentativeBinding
 import com.example.android.politicalpreparedness.models.Channel
 import com.example.android.politicalpreparedness.models.Representative
+import com.example.android.politicalpreparedness.utils.openUrl
 
 class RepresentativeViewHolder(
     private val binding: ItemRepresentativeBinding
@@ -61,13 +60,7 @@ class RepresentativeViewHolder(
 
     private fun enableLink(view: ImageView, url: String) {
         view.visibility = View.VISIBLE
-        view.setOnClickListener { setIntent(url) }
-    }
-
-    private fun setIntent(url: String) {
-        val uri = Uri.parse(url)
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-        itemView.context.startActivity(intent)
+        view.setOnClickListener { openUrl(view.context, url) }
     }
 
     companion object {

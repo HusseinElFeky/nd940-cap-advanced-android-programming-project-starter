@@ -59,7 +59,7 @@ class ElectionsViewModel(
 
         _stateUpcomingElections.postValue(
             ResponseState.Error(
-                messageRes = R.string.error_no_internet_connection
+                messageRes = R.string.error_server_unknown
             )
         )
     }
