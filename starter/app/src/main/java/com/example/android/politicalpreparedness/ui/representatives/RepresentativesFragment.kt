@@ -51,12 +51,16 @@ class RepresentativesFragment : Fragment() {
         viewModel.representatives.observe(viewLifecycleOwner, Observer {
             representativesAdapter.submitList(it)
             if (it.isEmpty()) {
+                binding.motionLayout.getTransition(R.id.transition_form).setEnable(false)
                 binding.tvStateRepresentatives.apply {
                     text = getString(R.string.no_representatives_fetched)
                     isVisible = true
                 }
-            } else if (viewModel.stateRepresentatives.value !is ResponseState.Error) {
-                binding.tvStateRepresentatives.isVisible = false
+            } else {
+                binding.motionLayout.getTransition(R.id.transition_form).setEnable(true)
+                if (viewModel.stateRepresentatives.value !is ResponseState.Error) {
+                    binding.tvStateRepresentatives.isVisible = false
+                }
             }
         })
 

@@ -11,11 +11,13 @@
 
     </data>
 
-    <!-- TODO: Add motion scene to hide form on vertical scroll. -->
     <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motion_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        app:layoutDescription="@xml/scene_representatives"
+        tools:showPaths="true">
 
         <TextView
             android:id="@+id/tv_representatives_search"
